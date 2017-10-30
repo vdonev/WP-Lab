@@ -1,0 +1,105 @@
+<div class="col-md-6" style="margin:10px">
+  <div >
+      <label col-form-label>Ime</label>
+      <input id="title"
+      type="text"
+      required
+      maxlength="30"
+      minlength="2"
+      class="form-control"
+      [(ngModel)]="student.ime"
+      #ime="ngModel"
+      />
+      <div *ngIf="ime.invalid"
+        class="alert alert-danger">
+        <div *ngIf="ime.errors.required">
+          Imeto e zadolzitelno
+        </div>
+        <div *ngIf="ime.errors.maxlength">
+          Maksimalna dolzina na imeto e 30.
+        </div>
+        <div *ngIf="ime.errors.minlength">
+          Minimalnata dolzina na imeto e 2.
+        </div>
+      </div>
+
+  </div>
+  <div >
+    <label col-form-label>Prezime</label>
+    <input id="prezime"
+    type="text"
+    required
+    maxlength="30"
+    minlength="2"
+    class="form-control"
+    [(ngModel)]="student.prezime"
+    #prezime="ngModel"
+    />
+    <div *ngIf="prezime.invalid"
+    class="alert alert-danger">
+      <div *ngIf="prezime.errors.required">
+        Prezimeto e zadolzitelno.
+      </div>
+      <div *ngIf="prezime.errors.maxlength">
+         Maksimalna dolzina na prezimeto e 30.
+      </div>
+      <div *ngIf="prezime.errors.minlength">
+        Minimalna dolzina na prezimeto e 2.
+      </div>
+    </div>
+  </div>
+  <div >
+    <label col-form-label>Indeks</label>
+    <input id="title"
+    type="text"
+    required
+    length="6"
+    class="form-control"
+    [(ngModel)]="student.index"
+    #index="ngModel"
+    pattern="\d{6}"
+    />
+    <div *ngIf="index.invalid"
+    class="alert alert-danger">
+      <div *ngIf="index.errors.required">
+        Poleto za indeks e zadolzitelno.
+      </div>
+      <div *ngIf="index.errors.pattern">
+        Indeksot mora da bide sest cifri.
+      </div>
+    </div>
+  </div>
+  <div >
+    <label col-form-label>Nasoka</label>
+    <select name="Nasoki"
+    required
+    class="form-control"
+    [(ngModel)]="student.nasoka"
+    #nasoka="ngModel"
+    >
+        <option value="KNI">KNI</option>
+        <option value="PET">PET</option>
+        <option value="IKI">IKI</option>
+    </select>
+    <div *ngIf="nasoka.invalid"
+    class="alert alert-danger">
+      <div *ngIf="nasoka.errors.required">
+        Nasokata e zadolzitelna.
+      </div>
+    </div>
+  </div>
+  <div style="margin:20px">
+    <button class="btn btn-primary" (click)="save()"
+    [disabled]="ime.invalid || prezime.invalid || index.invalid || nasoka.invalid">
+    Save
+    </button>
+    <button class="btn btn-primary"
+    [routerLink]="['/list']">
+    Cancel
+    </button>    
+  </div>
+</div>
+
+
+
+
